@@ -6,8 +6,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
-    url: 'https://your-supabase-url.supabase.co',
-    anonKey: 'your-supabase-anon-key',
+    url: 'https://bgckesekscawcqvckexc.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnY2tlc2Vrc2Nhd2NxdmNrZXhjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDMxNjQsImV4cCI6MjA5MTExOTE2NH0.hWsE2gLFUEpAoOpHwYRnHguivXM5URVfveh810rqd24',
   );
   runApp(
     FlutterRunTrackerApp()
