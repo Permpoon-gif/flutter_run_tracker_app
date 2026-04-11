@@ -2,9 +2,9 @@
 
 class Run {
   String? id;
-  String runWhere;   // วิ่งที่ไหน
-  String runPerson;       // วิ่งกับใคร
-  double runDistance;   // ระยะทาง (กม.)
+  String runWhere;
+  String runPerson;
+  double runDistance;
 
   Run({
     this.id,
@@ -15,13 +15,19 @@ class Run {
 
   // รับข้อมูลจาก Supabase
   factory Run.fromJson(Map<String, dynamic> json) {
-  return Run(
-    id: json['id'],
-    runWhere: json['runWhere'],
-    runPerson: json['runPerson'],
-    runDistance: (json['runDistance'] as num).toDouble(),
-  );
-}
+    return Run(
+      id: json['id']?.toString(),
+
+      runWhere: json['runWhere'] ?? '',
+      runPerson: json['runPerson'] ?? '',
+
+      runDistance: json['runDistance'] != null
+          ? (json['runDistance'] as num).toDouble()
+          : 0.0,
+    );
+  }
+
+  get runDuration => null;
 
   // ส่งข้อมูลไป Supabase
   Map<String, dynamic> toJson() {

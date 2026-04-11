@@ -1,5 +1,5 @@
 // คลาสนี้จะใช้สำหรับการเชื่อมโค้ดคำสั่งทำงานต่างๆ กับ supabase
-import 'package:flutter_run_tracker_app/models/Run.dart';
+import 'package:flutter_run_tracker_app/models/run.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
@@ -20,7 +20,7 @@ Future<List<Run>> getAllRun() async {
   }
 
   // 🔹 แก้ไขข้อมูล
-  Future updateRun(String id, Run run) async {
+  Future updateRun(String id, Run run, String text, double parse) async {
     await supabase
         .from('run_tb')
         .update(run.toJson())

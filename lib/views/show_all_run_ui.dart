@@ -1,10 +1,11 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'package:flutter_run_tracker_app/models/Run.dart';
+import 'package:flutter_run_tracker_app/models/run.dart';
 import 'package:flutter_run_tracker_app/services/supabase_services.dart';
 import 'package:flutter_run_tracker_app/views/add_run_ui.dart';
 import 'package:flutter_run_tracker_app/views/update_delete_run_ui.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ShowAllRunUi extends StatefulWidget {
   const ShowAllRunUi({super.key});
@@ -19,7 +20,6 @@ class _ShowAllRunUiState extends State<ShowAllRunUi> {
   final service = SupabaseService();
 
   void loadAllRun() async {
-
     final data = await service.getAllRun();
 
     setState(() {
@@ -29,7 +29,6 @@ class _ShowAllRunUiState extends State<ShowAllRunUi> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadAllRun();
   }
@@ -38,70 +37,79 @@ class _ShowAllRunUiState extends State<ShowAllRunUi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor:  const Color.fromARGB(255, 59, 144, 255),
         title: Text(
           'Run Tracker',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: 40),
-            Image.asset(
-              'assets/images/RUN.png',
-              width: 180,
-              height: 180,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(height: 20),
-          Expanded(
-            child: ListView.builder(
-
-              itemCount: runs.length,
-
-              itemBuilder: (context, index) {
-                return ListTile(
-                  onTap: () {
-
-                  },
-                  leading: Image.asset(
-                    'assets/images/boy.png',
+      body: Column(
+        children: [
+          SizedBox(height: 40),
+          Image.asset(
+            'assets/images/run1.png',
+            width: 180,
+            height: 180,
+          ),
+          SizedBox(height: 20),
+          runs.isEmpty
+              ? Expanded(
+                  child: Center(child: Text('ไม่มีข้อมูลการวิ่ง')),
+                )
+              : Expanded(
+                  child: ListView.builder(
+                    itemCount: runs.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 5,
+                        ),
+                        child: ListTile(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    UpdateDeleteRunUi(run: runs[index]),
+                              ),
+                            ).then((value) {
+                              loadAllRun();
+                            });
+                          },
+                          leading: Image.asset('assets/images/boy.png'),
+                          trailing: Icon(Icons.info, color: const Color.fromARGB(255, 231, 68, 136)),
+                          title: Text('วิ่งที่ไหน ${runs[index].runWhere}'),
+                          subtitle: Text(
+                            'วิ่งกับ ${runs[index].runPerson} | ระยะทาง ${runs[index].runDistance} กม.',
+                          ),
+                          tileColor: index % 2 == 0
+                              ? const Color.fromARGB(255, 183, 215, 249)
+                              : const Color.fromARGB(255, 197, 232, 251),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                  trailing: Icon(
-                    Icons.info,
-                    color: Colors.red,
-                  ),
-                  title: Text(
-                    'วิ่งที่ไหน ${runs[index].runWhere}',),
-                  subtitle: Text(
-                    'วิ่งกับใคร ${runs[index].runPerson} ระยะทาง ${runs[index].runDistance} กม.',
-                  ),
-                );  
-              },
-              
-            ))
-          ],
-        ),
+                ),
+        ],
       ),
-              
-                
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => AddRunUi()
-          ),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddRunUi(),
+            ),
           ).then((value) {
-            //กลับมาหน่าแล้วจะให้ทำอะไร
-            //เรียก 
             loadAllRun();
           });
         },
-        backgroundColor: Colors.red,
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-          ),
+        child: Icon(Icons.add, color: Colors.white),
+        backgroundColor: const Color.fromARGB(255, 111, 54, 244),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

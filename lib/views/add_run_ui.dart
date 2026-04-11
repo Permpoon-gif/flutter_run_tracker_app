@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_run_tracker_app/services/supabase_services.dart';
-import '../models/Run.dart';
+import '../models/run.dart';
 
 class AddRunUi extends StatefulWidget {
   const AddRunUi({super.key});
