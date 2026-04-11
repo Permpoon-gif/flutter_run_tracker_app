@@ -1,5 +1,5 @@
 // คลาสนี้จะใช้สำหรับการเชื่อมโค้ดคำสั่งทำงานต่างๆ กับ supabase
-import 'package:flutter_run_tracker_app/models/run.dart';
+import 'package:flutter_run_tracker_app/models/Run.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {

@@ -6,13 +6,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
-    url: 'https://bgckesekscawcqvckexc.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnY2tlc2Vrc2Nhd2NxdmNrZXhjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDMxNjQsImV4cCI6MjA5MTExOTE2NH0.hWsE2gLFUEpAoOpHwYRnHguivXM5URVfveh810rqd24',
+    url: 'https://wmomhosbvjyjfjvzjfqs.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indtb21ob3Nidmp5amZqdnpqZnFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MTExMTgsImV4cCI6MjA5MTM4NzExOH0.crU8LD3fbfuiT2cKFJoDnMAWVnFaKJswsDtxD6vSmmo',
   );
-  runApp(
-    FlutterRunTrackerApp()
-  );
+
+  runApp(FlutterRunTrackerApp());
 }
+
 class FlutterRunTrackerApp extends StatefulWidget {
   const FlutterRunTrackerApp({super.key});
 
@@ -27,10 +27,7 @@ class _FlutterRunTrackerAppState extends State<FlutterRunTrackerApp> {
       debugShowCheckedModeBanner: false,
       home: SplashScreenUi(),
       theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme
-        )
-      ),
+          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),
     );
   }
 }
