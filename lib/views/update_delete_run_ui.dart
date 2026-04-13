@@ -149,7 +149,7 @@ class _UpdateDeleteRunUiState extends State<UpdateDeleteRunUi> {
                 ),
               ),
               child: const Text(
-                "บันทึกแก้ไข",
+                "บันทึกแก้ไขข้อมูล",
                 style: TextStyle(color: Colors.white),
               ),
             ),

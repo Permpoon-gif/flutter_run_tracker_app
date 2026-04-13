@@ -48,19 +48,21 @@ class _AddRunUiState extends State<AddRunUi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFEDE7F6),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 59, 144, 255),
         title:
             Text('Run Tracker (เพิ่ม)', style: TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
+
       body: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
+            SizedBox(height: 50),
             Image.asset('assets/images/RUN.png', height: 120),
-            SizedBox(height: 20),
+            SizedBox(height: 50),
 
             // วิ่งที่ไหน
             Column(
@@ -119,12 +121,19 @@ class _AddRunUiState extends State<AddRunUi> {
                 SizedBox(height: 20),
               ],
             ),
-                SizedBox(height: 50),
+                SizedBox(height: 30),
             // ปุ่มบันทึก
             ElevatedButton(
               onPressed: saveRun,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                fixedSize: Size(
+                  MediaQuery.of(context).size.width,
+                  50,
+                ),
                 minimumSize: Size(double.infinity, 50),
                 
               ),
@@ -144,6 +153,13 @@ class _AddRunUiState extends State<AddRunUi> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
                 minimumSize: Size(double.infinity, 50),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                fixedSize: Size(
+                  MediaQuery.of(context).size.width,
+                  50,
+                ),
                 
               ),
               child: Text('ยกเลิก', style: TextStyle(color: Colors.white)),
